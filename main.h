@@ -61,15 +61,18 @@ bool write_triangles_to_binary_stereo_lithography_file(const vector<triangle> &t
 		memcpy(cp, &normal.y, sizeof(float)); cp += sizeof(float);
 		memcpy(cp, &normal.z, sizeof(float)); cp += sizeof(float);
 
-		memcpy(cp, &i->vertex[0].x, sizeof(float)); cp += sizeof(float);
-		memcpy(cp, &i->vertex[0].y, sizeof(float)); cp += sizeof(float);
-		memcpy(cp, &i->vertex[0].z, sizeof(float)); cp += sizeof(float);
-		memcpy(cp, &i->vertex[1].x, sizeof(float)); cp += sizeof(float);
-		memcpy(cp, &i->vertex[1].y, sizeof(float)); cp += sizeof(float);
-		memcpy(cp, &i->vertex[1].z, sizeof(float)); cp += sizeof(float);
 		memcpy(cp, &i->vertex[2].x, sizeof(float)); cp += sizeof(float);
 		memcpy(cp, &i->vertex[2].y, sizeof(float)); cp += sizeof(float);
 		memcpy(cp, &i->vertex[2].z, sizeof(float)); cp += sizeof(float);
+
+		memcpy(cp, &i->vertex[1].x, sizeof(float)); cp += sizeof(float);
+		memcpy(cp, &i->vertex[1].y, sizeof(float)); cp += sizeof(float);
+		memcpy(cp, &i->vertex[1].z, sizeof(float)); cp += sizeof(float);
+
+		memcpy(cp, &i->vertex[0].x, sizeof(float)); cp += sizeof(float);
+		memcpy(cp, &i->vertex[0].y, sizeof(float)); cp += sizeof(float);
+		memcpy(cp, &i->vertex[0].z, sizeof(float)); cp += sizeof(float);
+
 
 		cp += sizeof(short unsigned int);
 	}
