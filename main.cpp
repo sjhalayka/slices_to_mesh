@@ -32,6 +32,11 @@ int main(void)
 		cout << "No slices found" << endl;
 		return 2;
 	}
+	else if(1 == slices.size())
+	{
+		cout << "Not enough slices found" << endl;
+		return 3;		
+	}
 
 	size_t x_res = slices[0].cols;
 	size_t y_res = slices[0].rows;
