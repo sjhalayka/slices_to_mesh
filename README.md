@@ -1,1 +1,1 @@
-# slices_to_mesh
+input_files.zip contains the PNG slices, alongside a file list.
