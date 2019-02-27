@@ -54,7 +54,7 @@ int main(void)
 	// Calculate 0th xy plane.
 	for (size_t x = 0; x < x_res; x++)
 		for (size_t y = 0; y < y_res; y++)
-			xyplane0[x*y_res + y] = static_cast<float>(slices[z].at<unsigned char>(y, x)) / 255.0f;
+			xyplane0[x*y_res + y] = slices[z].at<unsigned char>(y, x) / 255.0f;
 
 	// Prepare for 1st xy plane.
 	z++;
@@ -66,7 +66,7 @@ int main(void)
 
 		for (size_t x = 0; x < x_res; x++)
 			for (size_t y = 0; y < y_res; y++)
-				xyplane1[x*y_res + y] = static_cast<float>(slices[z].at<unsigned char>(y, x)) / 255.0f;
+				xyplane1[x*y_res + y] = slices[z].at<unsigned char>(y, x) / 255.0f;
 
 		// Calculate triangles for the xy-planes corresponding to z - 1 and z by marching cubes.
 		tesselate_adjacent_xy_plane_pair(
