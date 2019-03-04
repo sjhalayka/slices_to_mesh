@@ -38,18 +38,23 @@ int main(void)
 		return 3;		
 	}
 
-	size_t x_res = slices[0].cols;
-	size_t y_res = slices[0].rows;
-	size_t z_res = slices.size();
+	const float threshold = 0.5f;
+
+	const size_t x_res = slices[0].cols;
+	const size_t y_res = slices[0].rows;
+	const size_t z_res = slices.size();
+	const float x_grid_min = -(x_res / 2.0f);
+	const float x_grid_max =   x_res / 2.0f;
+	const float y_grid_min = -(y_res / 2.0f);
+	const float y_grid_max =   y_res / 2.0f;
+	const float z_grid_min = -(z_res / 2.0f);
+	const float z_grid_max =   z_res / 2.0f;
 
 	vector<triangle> triangles;
 	vector<float> xyplane0(x_res*y_res, 0);
 	vector<float> xyplane1(x_res*y_res, 0);
 
 	size_t z = 0;
-	float threshold = 0.5f;
-	float grid_min = -1.0f;
-	float grid_max = 1.0f;
 
 	// Calculate 0th xy plane.
 	for (size_t x = 0; x < x_res; x++)
@@ -74,9 +79,9 @@ int main(void)
 			z - 1,
 			triangles,
 			threshold, // Use threshold as isovalue.
-			grid_min, grid_max, x_res,
-			grid_min, grid_max, y_res,
-			grid_min, grid_max, z_res);
+			x_grid_min, x_grid_max, x_res,
+			y_grid_min, y_grid_max, y_res,
+			z_grid_min, z_grid_max, z_res);
 
 		// Swap memory pointers (fast) instead of performing a memory copy (slow).
 		xyplane1.swap(xyplane0);
